@@ -1,0 +1,13 @@
+# Notify user if Tor mode is activated in shell prompt by adding the following
+# line to .bashrc :
+
+PS1='$(case $LD_PRELOAD in *torsocks*)printf "(tor) ";;esac)'"${PS1#*esac)}"
+
+# user@computer:~$ . torsocks on
+# Tor mode activated. Every command will be torified for this shell.
+# (tor) user@computer:~$ 
+
+# (tor) user@computer:~$ . torsocks off
+# Tor mode deactivated. Command will NOT go through Tor anymore.
+# user@computer:~$
+
